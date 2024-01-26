@@ -32,6 +32,7 @@ window/stretch/scale_mode="integer"
 folder_colors={
 "res://assets/": "yellow",
 "res://src/": "red",
+"res://src/gui/": "green",
 "res://src/utils/": "blue"
 }
 
@@ -45,5 +46,6 @@ left_click={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

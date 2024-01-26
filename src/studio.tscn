@@ -1,13 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://upbwsgd7jbpm"]
+[gd_scene load_steps=4 format=3 uid="uid://upbwsgd7jbpm"]
 
 [ext_resource type="Script" path="res://src/studio.gd" id="1_ck0s2"]
+[ext_resource type="PackedScene" uid="uid://deuvj8k4p6c5a" path="res://src/gui/tool_box.tscn" id="1_vwolu"]
+[ext_resource type="PackedScene" uid="uid://sjih05fmkufv" path="res://src/gui/cursor.tscn" id="3_fgchf"]
 
-[node name="Studio" type="Node" node_paths=PackedStringArray("backgroundSprite", "canvasSprite")]
-script = ExtResource("1_ck0s2")
-backgroundSprite = NodePath("SubViewportContainer/SubViewport/Background")
-canvasSprite = NodePath("SubViewportContainer/SubViewport/DrawingSurface")
+[node name="GameRoot" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="ToolBox" parent="." instance=ExtResource("1_vwolu")]
+layout_mode = 1
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -27,8 +37,15 @@ handle_input_locally = false
 size = Vector2i(250, 300)
 render_target_update_mode = 4
 
-[node name="Background" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
+[node name="Studio" type="Node2D" parent="SubViewportContainer/SubViewport"]
+script = ExtResource("1_ck0s2")
+
+[node name="Background" type="Sprite2D" parent="SubViewportContainer/SubViewport/Studio"]
+unique_name_in_owner = true
 centered = false
 
-[node name="DrawingSurface" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
+[node name="Canvas" type="Sprite2D" parent="SubViewportContainer/SubViewport/Studio"]
+unique_name_in_owner = true
 centered = false
+
+[node name="Cursor" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_fgchf")]

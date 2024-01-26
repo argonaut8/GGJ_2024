@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://sjih05fmkufv"]
+
+[ext_resource type="Script" path="res://src/gui/cursor.gd" id="1_cuhpc"]
+
+[node name="Cursor" type="Marker2D"]
+script = ExtResource("1_cuhpc")
