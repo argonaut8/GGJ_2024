@@ -19,8 +19,10 @@ func _init(canvas: Image) -> void:
 	add_child(sprite)
 	sprite.centered = false
 	sprite.offset = Vector2(-32, -32)
-	
+	SignalBus.color_selected.connect(set_color)
 
+func set_color(new_color: Color) -> void:
+	color = new_color
 
 #func draw_pixels(pixels: Array[Vector2i]) -> void:
 func draw_pixels(pixels: Dictionary) -> void:
