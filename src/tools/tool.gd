@@ -30,6 +30,6 @@ func draw_pixels(pixels: Dictionary) -> void:
 	for pixel_coord in pixels.keys():
 		var pixel_color = pixels[pixel_coord]
 		if pixel_coord.x >= 0 and pixel_coord.x < viewport_size.x and pixel_coord.y >= 0 and pixel_coord.y < viewport_size.y:
-			canvas_ref.set_pixelv(pixel_coord, pixel_color)
+			canvas_ref.set_pixelv(pixel_coord, canvas_ref.get_pixelv(pixel_coord).blend(pixel_color))
 			SignalBus.update_canvas.emit()
 	edited_pixels.clear()
