@@ -1,13 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://deuvj8k4p6c5a"]
 
 [ext_resource type="Script" path="res://src/gui/tool_box.gd" id="1_trmd0"]
-[ext_resource type="PackedScene" uid="uid://bwhm0keqknvd8" path="res://src/gui/tool_button.tscn" id="2_p4kln"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_okayo"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
 
 [node name="ToolBox" type="PanelContainer"]
 anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_okayo")
 script = ExtResource("1_trmd0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -17,6 +23,3 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 columns = 6
-
-[node name="ToolButton" parent="VBoxContainer/ButtonsGrid" instance=ExtResource("2_p4kln")]
-layout_mode = 2

@@ -11,5 +11,4 @@ func _process(delta):
 	pass
 
 func set_icon(tool: Tool) -> void:
-	if tool is Brush:
-		icon = tool.sprite.texture
+	icon = tool.sprite.texture
