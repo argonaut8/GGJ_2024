@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://djynxbq8x62vn"]
+
+[ext_resource type="Script" path="res://src/gui/color_swatch.gd" id="1_nvg4j"]
+
+[node name="ColorSwatch" type="GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+columns = 2
+script = ExtResource("1_nvg4j")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

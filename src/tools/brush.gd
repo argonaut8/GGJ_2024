@@ -23,7 +23,7 @@ func _unhandled_input(event) -> void:
 	elif event is InputEventMouseMotion and is_clicked:
 		var brushPosition = prev_mouse_position
 		while (brushPosition - event.position).length() > 0.0:
-			edited_pixels[event.position.round() as Vector2i] = color
+			edited_pixels[brushPosition.round() as Vector2i] = color
 			brushPosition = brushPosition.move_toward(event.position, 1)
 		draw_pixels(edited_pixels)
 		prev_mouse_position = event.position
