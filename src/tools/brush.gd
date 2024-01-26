@@ -34,4 +34,7 @@ func _draw_filled_circle(x:int, y:int, r:int) -> void:
 			if(i*i + j*j <= r*r):
 				var new_color = color
 				new_color.a = 1 - j*j/float(r*r) - i*i/float(r*r)
-				edited_pixels[Vector2i(x+i, y+j)] = new_color
+				if Vector2i(x+i, y+j) in edited_pixels.keys():
+					edited_pixels[Vector2i(x+i, y+j)].a += new_color.a
+				else:
+					edited_pixels[Vector2i(x+i, y+j)] = new_color
