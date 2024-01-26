@@ -11,11 +11,13 @@ func _unhandled_input(event) -> void:
 	if event is InputEventMouseButton:
 		if event.get_button_index() == MOUSE_BUTTON_LEFT:
 			if event.pressed:
-				var image_size = sprite.texture.get_size()
-				for x in image_size.x:
-					for y in image_size.y:
-						var image_pixel = sprite.texture.get_image().get_pixel(x,y)
-						if image_pixel == Color.BLACK:
-							var pos: Vector2i = event.position - Vector2i(x,y)/stamp_scale
-							edited_pixels.append(pos)
+				var image = sprite.texture.get_image()
+				image.resize(image.get_width()*stamp_scale, image.get_height()*stamp_scale, 0)
+				
+				for x in image.get_width():
+					for y in image.get_height():
+						var image_pixel = image.get_pixel(x,y)
+						if image_pixel.a == 1:
+							var pos: Vector2i = event.position + Vector2(x,y) - Vector2(image.get_width()/2, image.get_height()/2)
+							edited_pixels[pos] = image_pixel
 				draw_pixels(edited_pixels)
