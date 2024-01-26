@@ -1,4 +1,4 @@
-class_name Brush
+class_name Pen
 extends Tool
 
 var is_clicked: bool = false
@@ -6,7 +6,7 @@ var prev_mouse_position: Vector2
 
 func _init(canvas: Image) -> void:
 	super._init(canvas)
-	sprite.texture = load("res://assets/tools/button3.png")
+	sprite.texture = load("res://assets/tools/button1.png")
 
 func _unhandled_input(event) -> void:
 	if event is InputEventMouseButton:
@@ -14,7 +14,6 @@ func _unhandled_input(event) -> void:
 			if event.pressed:
 				is_clicked = true
 				prev_mouse_position = event.position
-				
 				edited_pixels[event.position.round() as Vector2i] = color
 				draw_pixels(edited_pixels)
 			else:
@@ -27,6 +26,4 @@ func _unhandled_input(event) -> void:
 		draw_pixels(edited_pixels)
 		prev_mouse_position = event.position
 
-#
-#func draw_circle(x:int, y:int, r:int) -> Array[Vector2i]:
-	#pass
+

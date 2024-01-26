@@ -7,8 +7,13 @@ var canvas_ref: Image
 #var edited_pixels: Array[Vector2i] = []
 var edited_pixels: Dictionary = {}
 var color: Color = Color.BLACK
+var tool_size: float = 1.0
+var tool_opactiy: float = 1
+
+var rng := RandomNumberGenerator.new()
 
 func _init(canvas: Image) -> void:
+	rng.randomize()
 	canvas_ref = canvas
 	sprite = Sprite2D.new()
 	add_child(sprite)
