@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://upbwsgd7jbpm"]
+[gd_scene load_steps=7 format=3 uid="uid://upbwsgd7jbpm"]
 
 [ext_resource type="Script" path="res://src/studio.gd" id="1_ck0s2"]
+[ext_resource type="Script" path="res://src/game_root.gd" id="1_ra1x8"]
 [ext_resource type="PackedScene" uid="uid://deuvj8k4p6c5a" path="res://src/gui/tool_box.tscn" id="1_vwolu"]
 [ext_resource type="PackedScene" uid="uid://daegat4dupbnh" path="res://src/gui/color_palette.tscn" id="2_f762m"]
 [ext_resource type="PackedScene" uid="uid://cygmritrcy2fr" path="res://src/gui/prompt.tscn" id="3_ewqho"]
@@ -14,6 +15,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("1_ra1x8")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
