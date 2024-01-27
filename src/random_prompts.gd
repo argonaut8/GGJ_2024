@@ -18,7 +18,7 @@ const prompt_structure_list: Array[String] = [
 	"%s Party",
 	"If Nobody Got Me I Know %s Got Me. Can I Get an Amen?",
 	"Honestly I'm curious what happens if I just put a really long prompt into this textbox. Also %s",
-	"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa %s <- I have to add one of these to the prompt or it causes an error",
+	"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa %s",
 	"The %s Machine",
 	"Approximate %s",
 	"The one who seeks %s",

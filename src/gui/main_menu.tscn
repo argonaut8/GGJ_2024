@@ -1,11 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dj1ym2y851e3b"]
+[gd_scene load_steps=8 format=3 uid="uid://dj1ym2y851e3b"]
 
 [ext_resource type="Script" path="res://src/gui/main_menu.gd" id="1_sv56s"]
+[ext_resource type="PackedScene" uid="uid://j2dvlu87ix4e" path="res://src/gui/animated_background.tscn" id="2_j6l6p"]
 [ext_resource type="Texture2D" uid="uid://x05hx4f2h1wn" path="res://assets/main_menu/logo.png" id="2_ngx3h"]
 [ext_resource type="Texture2D" uid="uid://5qihi0kukw3e" path="res://assets/main_menu/title.png" id="3_h8jpn"]
-[ext_resource type="Texture2D" uid="uid://cd63wa5e57hss" path="res://assets/main_menu/scrolling_confetti_1.png" id="3_x24l2"]
-[ext_resource type="Texture2D" uid="uid://6wiqy6o6lq0s" path="res://assets/main_menu/scrolling_spikes.png" id="4_kkqh0"]
-[ext_resource type="Texture2D" uid="uid://c2mrhq0i488cw" path="res://assets/main_menu/scrolling_confetti_2.png" id="4_wn3wq"]
 [ext_resource type="Theme" uid="uid://4gucrwdin4g" path="res://assets/fonts/pixel_font_theme.tres" id="7_3i2tf"]
 [ext_resource type="FontFile" uid="uid://c4hdkcaj1uynb" path="res://assets/fonts/FoxyBox.ttf" id="8_lf7oo"]
 
@@ -24,32 +22,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sv56s")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="AnimatedBackground" parent="." instance=ExtResource("2_j6l6p")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.905882, 0.882353, 0.8, 1)
-
-[node name="BackgroundConfetti2" type="Sprite2D" parent="."]
-texture = ExtResource("4_wn3wq")
-centered = false
-region_enabled = true
-region_rect = Rect2(0, 0, 512, 342)
-
-[node name="BackgroundConfetti1" type="Sprite2D" parent="."]
-texture = ExtResource("3_x24l2")
-centered = false
-region_enabled = true
-region_rect = Rect2(0, 0, 512, 342)
-
-[node name="BackgroundSpikes" type="Sprite2D" parent="."]
-texture = ExtResource("4_kkqh0")
-centered = false
-region_enabled = true
-region_rect = Rect2(0, 0, 512, 342)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -95,6 +69,7 @@ label_settings = SubResource("LabelSettings_00f08")
 title = "CREDITS"
 initial_position = 1
 size = Vector2i(300, 200)
+theme = ExtResource("7_3i2tf")
 ok_button_text = "Ok cool"
 
 [node name="Label" type="Label" parent="CreditsDialog"]
@@ -102,8 +77,11 @@ offset_left = 8.0
 offset_top = 8.0
 offset_right = 292.0
 offset_bottom = 151.0
+theme = ExtResource("7_3i2tf")
 text = "By Jone$oda and Theonixie
+
 Global Game Jam 2024
+
 Shoutouts to my brother for some of the prompt suggestions"
 autowrap_mode = 2
 

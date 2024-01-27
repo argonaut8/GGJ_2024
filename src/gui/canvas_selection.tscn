@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwysjttg0jcq8"]
+[gd_scene load_steps=6 format=3 uid="uid://cwysjttg0jcq8"]
 
 [ext_resource type="Script" path="res://src/gui/canvas_selection.gd" id="1_esw2a"]
+[ext_resource type="Theme" uid="uid://4gucrwdin4g" path="res://assets/fonts/pixel_font_theme.tres" id="2_6t1da"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1s5fk"]
 content_margin_left = 8.0
@@ -17,8 +18,8 @@ fill_from = Vector2(1, 0)
 fill_to = Vector2(1, 1)
 
 [node name="CanvasSelection" type="PanelContainer"]
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_1s5fk")
 script = ExtResource("1_esw2a")
 
@@ -27,14 +28,13 @@ layout_mode = 2
 
 [node name="CanvasTexture" type="TextureRect" parent="VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(250, 300)
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
+size_flags_vertical = 3
 texture = SubResource("GradientTexture2D_11d5r")
 
 [node name="PickButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_6t1da")
 text = "Pick"
 
 [connection signal="pressed" from="VBoxContainer/PickButton" to="." method="_on_pick_button_pressed"]
