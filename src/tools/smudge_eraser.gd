@@ -8,7 +8,7 @@ var prev_mouse_position: Vector2
 func _init(canvas: Image) -> void:
 	super._init(canvas)
 	color = Color.TRANSPARENT
-	tool_size = 3
+	tool_size = 1
 	sprite.texture = load("res://assets/tools/button13.png")
 
 
@@ -57,11 +57,12 @@ func _gauss_blur_point_zone(x:int, y:int, r:int) -> void:
 			avg_a += near_color.a
 	
 	var sq = r*r
-	center_pixel_color.r = avg_r / sq
-	center_pixel_color.g = avg_g / sq
-	center_pixel_color.b = avg_b / sq
-	center_pixel_color.a = avg_a / sq * 0.25
-	edited_pixels[Vector2i(x, y)] = center_pixel_color
+	center_pixel_color.r = avg_r / (sq-1)
+	center_pixel_color.g = avg_g / (sq-1)
+	center_pixel_color.b = avg_b / (sq-1)
+	center_pixel_color.a = avg_a / (sq-1) * 0.25
+	if not Vector2i(x, y) in edited_pixels.keys():
+		edited_pixels[Vector2i(x, y)] = center_pixel_color
 
 func _drawpoints(xc:int, yc:int, x:int, y:int) -> void:
 	var gauss_size = 3
