@@ -37,6 +37,8 @@ func _ready():
 	tools.append(Crayon.new(canvas))
 	tools.append(FingerPaint.new(canvas))
 	tools.append(IceSkates.new(canvas))
+	tools.append(HotDogStamp.new(canvas))
+	tools.append(LineTool.new(canvas))
 	SignalBus.set_available_tools.emit(tools)
 	
 
