@@ -1,0 +1,11 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://4gucrwdin4g"]
+
+[ext_resource type="FontFile" uid="uid://c4hdkcaj1uynb" path="res://assets/fonts/FoxyBox.ttf" id="1_250fb"]
+
+[resource]
+default_font = ExtResource("1_250fb")
+default_font_size = 9
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 4
+Button/font_sizes/font_size = 9

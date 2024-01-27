@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dj1ym2y851e3b"]
+[gd_scene load_steps=10 format=3 uid="uid://dj1ym2y851e3b"]
 
 [ext_resource type="Script" path="res://src/gui/main_menu.gd" id="1_sv56s"]
 [ext_resource type="Texture2D" uid="uid://x05hx4f2h1wn" path="res://assets/main_menu/logo.png" id="2_ngx3h"]
@@ -6,6 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://cd63wa5e57hss" path="res://assets/main_menu/scrolling_confetti_1.png" id="3_x24l2"]
 [ext_resource type="Texture2D" uid="uid://6wiqy6o6lq0s" path="res://assets/main_menu/scrolling_spikes.png" id="4_kkqh0"]
 [ext_resource type="Texture2D" uid="uid://c2mrhq0i488cw" path="res://assets/main_menu/scrolling_confetti_2.png" id="4_wn3wq"]
+[ext_resource type="Theme" uid="uid://4gucrwdin4g" path="res://assets/fonts/pixel_font_theme.tres" id="7_3i2tf"]
+[ext_resource type="FontFile" uid="uid://c4hdkcaj1uynb" path="res://assets/fonts/FoxyBox.ttf" id="8_lf7oo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_00f08"]
+font = ExtResource("8_lf7oo")
+font_size = 9
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -70,15 +78,18 @@ stretch_mode = 5
 
 [node name="NewDrawingButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("7_3i2tf")
 text = "NEW DRAWING"
 
 [node name="CreditsButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("7_3i2tf")
 text = "CREDITS"
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "Global Game Jam 2024"
+label_settings = SubResource("LabelSettings_00f08")
 
 [node name="CreditsDialog" type="AcceptDialog" parent="."]
 title = "CREDITS"
