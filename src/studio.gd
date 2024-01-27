@@ -34,6 +34,7 @@ func _ready():
 	tools.append(Hairdryer.new(canvas))
 	tools.append(SmudgeEraser.new(canvas))
 	tools.append(AirBrush.new(canvas))
+	tools.append(Crayon.new(canvas))
 	SignalBus.set_available_tools.emit(tools)
 	
 
