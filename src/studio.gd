@@ -15,17 +15,13 @@ func _ready():
 	# Create the gradient for the background
 	SignalBus.update_canvas.connect(update_canvas)
 	#current_tool = Brush.new()
-	var bgGradient: Gradient = Gradient.new()
+	#var bgGradient: Gradient = Gradient.new()
 	var viewport_size = get_viewport().size
-	bgGradient.add_point(0, Color(1, 1, 1, 1))
-	bgGradient.add_point(viewport_size.y, Color(0.3, 0.8, 1, 1))
+	#bgGradient.add_point(0, Color(1, 1, 1, 1))
+	#bgGradient.add_point(viewport_size.y, Color(0.3, 0.8, 1, 1))
 	
 	canvas = Image.create(viewport_size.x, viewport_size.y, false, Image.FORMAT_RGBA8)
-	for y in viewport_size.y:
-		for x in viewport_size.x:
-			canvas.set_pixel(x, y, bgGradient.sample(float(y)))
-	canvasTexture = ImageTexture.create_from_image(canvas)
-	canvasSprite.texture = canvasTexture
+	
 	var tools: Array[Tool] = []
 	tools.append(Brush.new(canvas))
 	tools.append(Stamp.new(canvas))
@@ -48,3 +44,12 @@ func _process(delta):
 
 func update_canvas() -> void:
 	canvasTexture.update(canvas)
+
+func set_gradient(canvas_gradient: Image) -> void:
+	var viewport_size = get_viewport().size
+	canvas_gradient.resize(viewport_size.x, viewport_size.y)
+	for y in viewport_size.y:
+		for x in viewport_size.x:
+			canvas.set_pixel(x, y, canvas_gradient.get_pixel(x,y))
+	canvasTexture = ImageTexture.create_from_image(canvas)
+	canvasSprite.texture = canvasTexture

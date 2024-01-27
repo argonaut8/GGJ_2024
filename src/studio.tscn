@@ -30,6 +30,7 @@ layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+alignment = 1
 
 [node name="ToolBox" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_vwolu")]
 layout_mode = 2
@@ -45,6 +46,7 @@ size = Vector2i(250, 300)
 render_target_update_mode = 4
 
 [node name="Studio" type="Node2D" parent="VBoxContainer/HBoxContainer/SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
 script = ExtResource("1_ck0s2")
 
 [node name="Background" type="Sprite2D" parent="VBoxContainer/HBoxContainer/SubViewportContainer/SubViewport/Studio"]

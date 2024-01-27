@@ -1,7 +1,8 @@
-class_name GameRoot
+class_name CanvasSelect
 extends Control
 
-@onready var studio: Studio = $"%Studio"
+
+signal canvas_selected(canvas_gradient: Image)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,5 +13,5 @@ func _ready():
 func _process(delta):
 	pass
 
-func set_gradient(canvas_gradient: Image) -> void:
-	studio.set_gradient(canvas_gradient)
+func canvas_picked(canvas_gradient: Image) -> void:
+	canvas_selected.emit(canvas_gradient)

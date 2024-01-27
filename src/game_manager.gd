@@ -3,6 +3,7 @@ extends Node
 
 const main_menu_scene: PackedScene = preload("res://src/gui/main_menu.tscn")
 const studio_scene: PackedScene = preload("res://src/studio.tscn")
+const canvas_select_scene: PackedScene = preload("res://src/gui/canvas_select.tscn")
 
 var current_child: Node
 
@@ -21,6 +22,12 @@ func load_main_menu() -> void:
 	main_menu.new_drawing.connect(_on_new_drawing_requested)
 
 func _on_new_drawing_requested() -> void:
-	var game: GameRoot = switch_to_scene(studio_scene)
+	var canvas_select: CanvasSelect = switch_to_scene(canvas_select_scene)
+	canvas_select.canvas_selected.connect(_on_canvas_selected)
+	#var game: GameRoot = switch_to_scene(studio_scene)
 	#game.main_menu_requested.connect(load_main_menu)
 	#game.new_game()
+
+func _on_canvas_selected(canvas_gradient: Image) -> void:
+	var game: GameRoot = switch_to_scene(studio_scene)
+	game.set_gradient(canvas_gradient)
