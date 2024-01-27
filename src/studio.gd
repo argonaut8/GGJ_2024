@@ -37,6 +37,7 @@ func _ready():
 	tools.append(Pen.new(canvas))
 	tools.append(Marker.new(canvas))
 	tools.append(Hairdryer.new(canvas))
+	tools.append(SmudgeEraser.new(canvas))
 	SignalBus.set_available_tools.emit(tools)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
