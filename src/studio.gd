@@ -35,6 +35,8 @@ func _ready():
 	tools.append(SmudgeEraser.new(canvas))
 	tools.append(AirBrush.new(canvas))
 	tools.append(Crayon.new(canvas))
+	tools.append(FingerPaint.new(canvas))
+	tools.append(IceSkates.new(canvas))
 	SignalBus.set_available_tools.emit(tools)
 	
 

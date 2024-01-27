@@ -8,7 +8,7 @@ func _init(canvas: Image) -> void:
 	super._init(canvas)
 	tool_size = 5
 	sprite.texture = load("res://assets/tools/button2.png")
-
+	tool_name = "Crayon"
 
 #func _process(_delta: float) -> void:
 	#if is_clicked:
@@ -45,7 +45,7 @@ func crayon_brush(center: Vector2i, brush_size:int) -> void:
 		for j in range(-r, r):
 			if(i*i + j*j <= r*r):
 			#if(i*i + j*j <= r*r):
-				var spray_chance = rng.randf()*20
+				var spray_chance = rng.randf()*10
 				var center_dist = 1 - j*j/float(r*r) - i*i/float(r*r)
 				if spray_chance <= center_dist:
 					edited_pixels[Vector2i(x+i, y+j)] = color

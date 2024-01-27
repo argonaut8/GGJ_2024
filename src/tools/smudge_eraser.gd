@@ -8,8 +8,10 @@ var prev_mouse_position: Vector2
 func _init(canvas: Image) -> void:
 	super._init(canvas)
 	color = Color.TRANSPARENT
-	tool_size = 1
+	tool_size = 5
 	sprite.texture = load("res://assets/tools/button13.png")
+	tool_name = "Smudgy Eraser"
+	tool_description = "An eraser that doesn't work very well!"
 
 
 func _unhandled_input(event) -> void:
@@ -51,13 +53,20 @@ func _gauss_blur_point_zone(x:int, y:int, r:int) -> void:
 	for i in range(max(x-r, 0), min(x+r, viewport_size.x)):
 		for j in range(max(y-r, 0), min(y+r, viewport_size.y)):
 			var near_color = canvas_ref.get_pixel(i,j)
-			if(center_pixel_color == Color.BLACK):
-				center_pixel_color = near_color
-				center_pixel_color.a = 0
-			if(near_color.a != 0):
-				center_pixel_color = lerp(center_pixel_color, near_color, 0.5)
+			avg_r = near_color.r
+			avg_g = near_color.g
+			avg_b = near_color.b
+			#avg_a = 0
+			#if(center_pixel_color == Color.BLACK):
+				#center_pixel_color = near_color
+				#center_pixel_color.a = 0
+			#if(near_color.a != 0):
+				#center_pixel_color = lerp(center_pixel_color, near_color, 0.5)
 
-	
+	center_pixel_color.r = avg_r / r*r
+	center_pixel_color.b = avg_b / r*r
+	center_pixel_color.g = avg_g / r*r
+	center_pixel_color.a *= 0.5
 	#if not Vector2i(x, y) in edited_pixels.keys():
 	edited_pixels[Vector2i(x, y)] = center_pixel_color
 

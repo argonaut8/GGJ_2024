@@ -8,6 +8,7 @@ func _init(canvas: Image) -> void:
 	super._init(canvas)
 	tool_size = 15
 	sprite.texture = load("res://assets/tools/button4.png")
+	tool_name = "Air Brush"
 
 
 #func _process(_delta: float) -> void:
@@ -46,8 +47,8 @@ func air_brush(center: Vector2i, brush_size:int) -> void:
 			if(i*i + j*j <= r*r):
 			#if(i*i + j*j <= r*r):
 				var spray_chance = rng.randf()
-				var center_dist = (1 - j*j/float(r*r)*2 - i*i/float(r*r)*2) * 0.02
+				var center_dist = (1 - j*j/float(r*r)*2 - i*i/float(r*r)*2) * 0.01
 				if spray_chance <= center_dist:
 					var new_color = color
-					new_color.a = 0.5 - spray_chance
+					new_color.a = 0.75 - spray_chance
 					edited_pixels[Vector2i(x+i, y+j)] = new_color

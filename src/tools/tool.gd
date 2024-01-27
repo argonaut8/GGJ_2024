@@ -10,6 +10,9 @@ var color: Color = Color.BLACK
 var tool_size: float = 1.0
 var tool_opactiy: float = 1
 
+
+var tool_name: String = ""
+var tool_description: String = ""
 var rng := RandomNumberGenerator.new()
 
 func _init(canvas: Image) -> void:

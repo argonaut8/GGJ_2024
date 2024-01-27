@@ -9,6 +9,7 @@ var prev_mouse_position: Vector2
 func _init(canvas: Image) -> void:
 	super._init(canvas)
 	sprite.texture = load("res://assets/tools/button14.png")
+	tool_name = "Hairdryer"
 
 func _unhandled_input(event) -> void:
 	if event is InputEventMouseButton:
