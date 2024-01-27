@@ -35,6 +35,7 @@ func _ready():
 	tools.append(SmudgeEraser.new(canvas))
 	tools.append(AirBrush.new(canvas))
 	SignalBus.set_available_tools.emit(tools)
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
