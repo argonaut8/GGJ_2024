@@ -19,16 +19,11 @@ func _ready():
 	var viewport_size = get_viewport().size
 	bgGradient.add_point(0, Color(1, 1, 1, 1))
 	bgGradient.add_point(viewport_size.y, Color(0.3, 0.8, 1, 1))
-	# Create the background image, using the gradient
-	var bgImage: Image = Image.create(viewport_size.x, viewport_size.y, false, Image.FORMAT_RGBA8)
-	for y in viewport_size.y:
-		for x in viewport_size.x:
-			bgImage.set_pixel(x, y, bgGradient.sample(float(y)))
-	
-	var bgTexture: ImageTexture = ImageTexture.create_from_image(bgImage)
-	backgroundSprite.texture = bgTexture
 	
 	canvas = Image.create(viewport_size.x, viewport_size.y, false, Image.FORMAT_RGBA8)
+	for y in viewport_size.y:
+		for x in viewport_size.x:
+			canvas.set_pixel(x, y, bgGradient.sample(float(y)))
 	canvasTexture = ImageTexture.create_from_image(canvas)
 	canvasSprite.texture = canvasTexture
 	var tools: Array[Tool] = []

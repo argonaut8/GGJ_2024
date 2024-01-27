@@ -36,6 +36,3 @@ func _unhandled_input(event) -> void:
 			
 		draw_pixels(edited_pixels)
 		prev_mouse_position = event.position
-
-
-
