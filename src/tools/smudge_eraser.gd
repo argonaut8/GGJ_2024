@@ -8,7 +8,7 @@ var prev_mouse_position: Vector2
 func _init(canvas: Image) -> void:
 	super._init(canvas)
 	color = Color.TRANSPARENT
-	tool_size = 5
+	tool_size = 3
 	sprite.texture = load("res://assets/tools/button13.png")
 
 
@@ -19,7 +19,7 @@ func _unhandled_input(event) -> void:
 				is_clicked = true
 				prev_mouse_position = event.position.round()
 				
-				_gauss_blur_point_zone(prev_mouse_position.x, prev_mouse_position.y, tool_size)
+				circle_gauss(prev_mouse_position.x, prev_mouse_position.y, tool_size)
 				draw_pixels(edited_pixels)
 			else:
 				is_clicked = false
@@ -34,7 +34,7 @@ func _unhandled_input(event) -> void:
 		var endPosition = startPosition + smearDirection
 		var canvas_color = canvas_ref.get_pixelv(startPosition)
 		while (brushPosition - event.position).length() > 0.0:
-			_gauss_blur_point_zone(brushPosition.round().x, brushPosition.round().y, tool_size)
+			circle_gauss(brushPosition.round().x, brushPosition.round().y, tool_size)
 			brushPosition = brushPosition.move_toward(event.position, 1)
 		draw_pixels(edited_pixels)
 		prev_mouse_position = event.position
@@ -42,7 +42,7 @@ func _unhandled_input(event) -> void:
 
 func _gauss_blur_point_zone(x:int, y:int, r:int) -> void:
 	var viewport_size = get_viewport_rect().size
-	if x < 0 and x > viewport_size.x and y < 0 and y > viewport_size.y: return
+	if x < 0 or x >= viewport_size.x or y < 0 or y >= viewport_size.y: return
 	var center_pixel_color = canvas_ref.get_pixel(x,y)
 	var avg_r = 0
 	var avg_g = 0
@@ -60,5 +60,30 @@ func _gauss_blur_point_zone(x:int, y:int, r:int) -> void:
 	center_pixel_color.r = avg_r / sq
 	center_pixel_color.g = avg_g / sq
 	center_pixel_color.b = avg_b / sq
-	center_pixel_color.a = avg_a / sq
+	center_pixel_color.a = avg_a / sq * 0.25
 	edited_pixels[Vector2i(x, y)] = center_pixel_color
+
+func _drawpoints(xc:int, yc:int, x:int, y:int) -> void:
+	var gauss_size = 3
+	_gauss_blur_point_zone(xc+x, yc+y, gauss_size)
+	_gauss_blur_point_zone(xc-x, yc+y, gauss_size)
+	_gauss_blur_point_zone(xc+x, yc-y, gauss_size)
+	_gauss_blur_point_zone(xc-x, yc-y, gauss_size)
+	_gauss_blur_point_zone(xc+y, yc+x, gauss_size)
+	_gauss_blur_point_zone(xc-y, yc+x, gauss_size)
+	_gauss_blur_point_zone(xc+y, yc-x, gauss_size)
+	_gauss_blur_point_zone(xc-y, yc-x, gauss_size)
+
+func circle_gauss(xc:int, yc:int, r:int) -> void:
+	var x = 0
+	var y = r
+	var d = 3 - 2 * r
+	_drawpoints(xc, yc, x, y)
+	while(y >= x):
+		x += 1
+		if (d>0):
+			y -= 1
+			d = d + 4 * (x-y) + 10
+		else:
+			d = d + 4 * x + 6
+		_drawpoints(xc, yc, x, y)
