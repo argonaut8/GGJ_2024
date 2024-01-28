@@ -3,5 +3,5 @@ extends PanelContainer
 
 @onready var prompt_label = $"%PromptLabel"
 
-func _ready():
-	prompt_label.text = RandomPrompts.new().pick_random_prompt()
+func set_prompt(prompt: String) -> void:
+	prompt_label.text = prompt

@@ -12,35 +12,9 @@ var current_tool: Tool
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# Create the gradient for the background
 	SignalBus.update_canvas.connect(update_canvas)
-	#current_tool = Brush.new()
-	#var bgGradient: Gradient = Gradient.new()
 	var viewport_size = get_viewport().size
-	#bgGradient.add_point(0, Color(1, 1, 1, 1))
-	#bgGradient.add_point(viewport_size.y, Color(0.3, 0.8, 1, 1))
-	
 	canvas = Image.create(viewport_size.x, viewport_size.y, false, Image.FORMAT_RGBA8)
-	
-	var tools: Array[Tool] = []
-	tools.append(Brush.new(canvas))
-	tools.append(Stamp.new(canvas))
-	tools.append(Pen.new(canvas))
-	tools.append(Marker.new(canvas))
-	tools.append(Hairdryer.new(canvas))
-	tools.append(SmudgeEraser.new(canvas))
-	tools.append(AirBrush.new(canvas))
-	tools.append(Crayon.new(canvas))
-	tools.append(FingerPaint.new(canvas))
-	tools.append(IceSkates.new(canvas))
-	tools.append(HotDogStamp.new(canvas))
-	tools.append(LineTool.new(canvas))
-	SignalBus.set_available_tools.emit(tools)
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func update_canvas() -> void:
 	canvasTexture.update(canvas)
@@ -53,3 +27,8 @@ func set_gradient(canvas_gradient: Image) -> void:
 			canvas.set_pixel(x, y, canvas_gradient.get_pixel(x,y))
 	canvasTexture = ImageTexture.create_from_image(canvas)
 	canvasSprite.texture = canvasTexture
+
+func set_tools(tools: Array[Tool]) -> void:
+	for tool in tools:
+		tool.canvas_ref = canvas
+	SignalBus.set_available_tools.emit(tools)

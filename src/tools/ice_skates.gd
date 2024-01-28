@@ -8,7 +8,7 @@ func _init(canvas: Image) -> void:
 	super._init(canvas)
 	sprite.texture = load("res://assets/tools/button16.png")
 	tool_size = 5
-	#tool_name = "Fingerpaint"
+	tool_name = "Ice Skates"
 	#tool_description = "Paint with your fingers!!"
 
 func _unhandled_input(event) -> void:

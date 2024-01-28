@@ -10,7 +10,7 @@ func _init(canvas: Image) -> void:
 	sprite.texture = load("res://assets/tools/button5.png")
 	tool_size = 5
 	prog_color = color
-	#tool_name = "Fingerpaint"
+	tool_name = "Finger Paint"
 	#tool_description = "Paint with your fingers!!"
 
 func _ready() -> void:
