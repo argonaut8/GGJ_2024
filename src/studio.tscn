@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://upbwsgd7jbpm"]
+[gd_scene load_steps=8 format=3 uid="uid://upbwsgd7jbpm"]
 
 [ext_resource type="Script" path="res://src/studio.gd" id="1_ck0s2"]
 [ext_resource type="Script" path="res://src/game_root.gd" id="1_ra1x8"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://daegat4dupbnh" path="res://src/gui/color_palette.tscn" id="2_f762m"]
 [ext_resource type="PackedScene" uid="uid://cygmritrcy2fr" path="res://src/gui/prompt.tscn" id="3_ewqho"]
 [ext_resource type="PackedScene" uid="uid://sjih05fmkufv" path="res://src/gui/cursor.tscn" id="3_fgchf"]
+[ext_resource type="Theme" uid="uid://4gucrwdin4g" path="res://assets/fonts/pixel_font_theme.tres" id="7_vnix8"]
 
 [node name="GameRoot" type="Control"]
 layout_mode = 3
@@ -72,3 +73,20 @@ centered = false
 [node name="ColorPalette" parent="VBoxContainer/HBoxContainer" instance=ExtResource("2_f762m")]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="TimerLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("7_vnix8")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 26
+text = "15:00"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -28,7 +28,7 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
-custom_minimum_size = Vector2(270, 0)
+custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 theme = ExtResource("3_6pwe4")
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -36,7 +36,11 @@ theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 13
 text = "Welcome to Sisyphus Studio!!
 
-You will be given a set of random tools and a random prompt"
+You will be given a set of 6 random tools and a random prompt to help stimulate your imagination.
+
+You'll will have 15 minutes to express yourself.
+
+Good luck!!!"
 horizontal_alignment = 1
 autowrap_mode = 2
 

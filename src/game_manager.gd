@@ -6,6 +6,7 @@ const info_scene: PackedScene = preload("res://src/gui/info_screen.tscn")
 const studio_scene: PackedScene = preload("res://src/studio.tscn")
 const canvas_select_scene: PackedScene = preload("res://src/gui/canvas_select.tscn")
 const randoms_scene: PackedScene = preload("res://src/gui/random_select_screen.tscn")
+const final_scene: PackedScene = preload("res://src/gui/final_screen.tscn")
 
 var current_child: Node
 
@@ -48,4 +49,11 @@ func _on_randoms_accepted(canvas: Image, prompt:String, tools:Array[Tool], chose
 	game.set_tools(tools)
 	game.set_prompt(prompt)
 	game.set_colors(chosen_palettes_indices)
-
+	game.time_up.connect(_on_studio_timeout)
+	
+func _on_studio_timeout(canvas: Image, prompt:String) -> void:
+	var final: FinalScreen = switch_to_scene(final_scene)
+	final.set_gradient(canvas)
+	final.set_prompt(prompt)
+	final.restart_draw.connect(_on_info_read)
+	final.main_menu_requested.connect(load_main_menu)
