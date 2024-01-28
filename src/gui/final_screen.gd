@@ -23,13 +23,9 @@ func set_prompt(prompt: String) -> void:
 	prompt_label.text = prompt
 
 func _on_save_button_pressed():
-	# For some reason we need to wait two frames for the viewport.
-	await get_tree().idle_frame
-	await get_tree().idle_frame
-	var rectangle = Rect2(0, 0, 250, 300)
-	var img = %SubViewport.get_texture().get_data() as Image
-	img.flip_y()
-	var buffer = img.save_png_to_buffer
+	await RenderingServer.frame_post_draw
+	var img = $VBoxContainer/CenterContainer/HBoxContainer/VBoxContainer2/SubViewportContainer/SubViewport.get_texture().get_image() as Image
+	var buffer = img.save_png_to_buffer()
 	JavaScriptBridge.download_buffer(buffer, "render.png")
 
 func _on_restart_button_pressed():
