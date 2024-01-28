@@ -6,7 +6,7 @@ var prev_mouse_position: Vector2
 
 func _init(canvas: Image) -> void:
 	super._init(canvas)
-	tool_size = 5
+	tool_size = 3
 	sprite.texture = load("res://assets/tools/button17.png")
 	tool_name = "Brush"
 

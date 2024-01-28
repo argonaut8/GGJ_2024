@@ -23,7 +23,7 @@ func _unhandled_input(event) -> void:
 	elif event is InputEventMouseMotion and is_clicked:
 		var brushPosition = prev_mouse_position
 		var smearDirection: Vector2 = (event.position - brushPosition).normalized() * 20
-		for i in 50:
+		for i in 35:
 			var theta : float = randf() * 2 * PI
 			var startPosition = (brushPosition + Vector2(cos(theta), sin(theta)) * sqrt(randf()) * 20).round()
 			startPosition.x = clamp(startPosition.x, 0, canvas_ref.get_width() - 1)

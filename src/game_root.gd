@@ -33,3 +33,7 @@ func set_colors(chosen_palettes_indices) -> void:
 
 func _on_timer_timeout():
 	time_up.emit(studio.canvas, prompt_header.get_prompt())
+
+
+func _on_finish_button_pressed():
+	time_up.emit(studio.canvas, prompt_header.get_prompt())

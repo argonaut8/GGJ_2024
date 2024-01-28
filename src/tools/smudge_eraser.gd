@@ -8,7 +8,7 @@ var prev_mouse_position: Vector2
 func _init(canvas: Image) -> void:
 	super._init(canvas)
 	color = Color.TRANSPARENT
-	tool_size = 5
+	tool_size = 3
 	sprite.texture = load("res://assets/tools/button13.png")
 	tool_name = "Smudgy Eraser"
 	tool_description = "An eraser that doesn't work very well!"

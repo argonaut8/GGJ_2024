@@ -8,7 +8,7 @@ var prog_color:Color
 func _init(canvas: Image) -> void:
 	super._init(canvas)
 	sprite.texture = load("res://assets/tools/button5.png")
-	tool_size = 5
+	tool_size = 3
 	prog_color = color
 	tool_name = "Finger Paint"
 	#tool_description = "Paint with your fingers!!"
