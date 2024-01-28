@@ -53,11 +53,13 @@ stretch_mode = 5
 [node name="NewDrawingButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("7_3i2tf")
+theme_override_font_sizes/font_size = 26
 text = "NEW DRAWING"
 
 [node name="CreditsButton" type="Button" parent="VBoxContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("7_3i2tf")
+theme_override_font_sizes/font_size = 26
 text = "CREDITS"
 
 [node name="Label" type="Label" parent="VBoxContainer"]

@@ -2,6 +2,7 @@ class_name GameManager
 extends Node
 
 const main_menu_scene: PackedScene = preload("res://src/gui/main_menu.tscn")
+const info_scene: PackedScene = preload("res://src/gui/info_screen.tscn")
 const studio_scene: PackedScene = preload("res://src/studio.tscn")
 const canvas_select_scene: PackedScene = preload("res://src/gui/canvas_select.tscn")
 
@@ -22,11 +23,17 @@ func load_main_menu() -> void:
 	main_menu.new_drawing.connect(_on_new_drawing_requested)
 
 func _on_new_drawing_requested() -> void:
-	var canvas_select: CanvasSelect = switch_to_scene(canvas_select_scene)
-	canvas_select.canvas_selected.connect(_on_canvas_selected)
+	var info_screen = switch_to_scene(info_scene)
+	info_screen.next_screen.connect(_on_info_read)
+	#var canvas_select: CanvasSelect = switch_to_scene(canvas_select_scene)
+	#canvas_select.canvas_selected.connect(_on_canvas_selected)
 	#var game: GameRoot = switch_to_scene(studio_scene)
 	#game.main_menu_requested.connect(load_main_menu)
 	#game.new_game()
+
+func _on_info_read() -> void:
+	var canvas_select: CanvasSelect = switch_to_scene(canvas_select_scene)
+	canvas_select.canvas_selected.connect(_on_canvas_selected)
 
 func _on_canvas_selected(canvas_gradient: Image) -> void:
 	var game: GameRoot = switch_to_scene(studio_scene)

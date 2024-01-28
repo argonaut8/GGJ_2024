@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3qa0t251mfgk"]
+
+[ext_resource type="PackedScene" uid="uid://j2dvlu87ix4e" path="res://src/gui/animated_background.tscn" id="1_b3qun"]
+[ext_resource type="Script" path="res://src/gui/info_screen.gd" id="1_kmg6t"]
+[ext_resource type="Theme" uid="uid://4gucrwdin4g" path="res://assets/fonts/pixel_font_theme.tres" id="3_6pwe4"]
+
+[node name="InfoScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kmg6t")
+
+[node name="AnimatedBackground" parent="." instance=ExtResource("1_b3qun")]
+layout_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(270, 0)
+layout_mode = 2
+theme = ExtResource("3_6pwe4")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 13
+text = "Welcome to Sisyphus Studio!!
+
+You will be given a set of random tools and a random prompt"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ChooseCanvasButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_6pwe4")
+text = "Start"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/ChooseCanvasButton" to="." method="_on_choose_canvas_button_pressed"]
